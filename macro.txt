@@ -1,0 +1,11 @@
+ Sub CopyDayWS()
+    Dim dt
+    dt = CDate("2020/4/1")
+    For i = 2 To 31
+        dt = DateAdd("d", 1, dt)
+        Worksheets(1).Copy after:=Worksheets(i - 1)
+        With Application
+            Worksheets(i).Name = .Text(dt, "mm月dd日(") & .Text(dt, "aaa)")
+        End With
+    Next
+ End Sub
